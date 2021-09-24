@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function (event) {
   var logs = 0
   var stones = 0
   var pickaxes = 0
@@ -18,11 +18,17 @@ $(document).ready(function () {
     changeMarket()
   }, 1000)
 
-  $('#chop').click(function () {
+  function myFunction() {
+    document.getElementById('#chop').click()
     logs += logPlus
     changeInventory()
     changeMarket()
-  })
+  }
+  // $('#chop').click(function () {
+  //   logs += logPlus
+  //   changeInventory()
+  //   changeMarket()
+  // })
 
   $('#mineStone').click(function () {
     if (pickaxes == 0) {
