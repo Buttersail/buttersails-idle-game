@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function (event) {
-  var logs = 0
-  var stones = 0
-  var pickaxes = 0
-  var money = 0
-  var logPlus = 1
-  var stonePlus = 1
-  var autoLogPlus = 0
-  var autoChopperPrice = 100
-  var pickaxePrice = 50
-  var logPrice = 1
-  var stonePrice = 5
-  var menu
+  let logs = 0
+  let stones = 0
+  let pickaxes = 0
+  let money = 0
+  let logPlus = 1
+  let stonePlus = 1
+  let autoLogPlus = 0
+  let autoChopperPrice = 100
+  let pickaxePrice = 50
+  let logPrice = 1
+  let stonePrice = 5
+  let menu
 
   setInterval(() => {
     logs += autoLogPlus
@@ -18,111 +18,113 @@ document.addEventListener('DOMContentLoaded', function (event) {
     changeMarket()
   }, 1000)
 
-  function myFunction() {
-    document.getElementById('#chop').click()
+  document.getElementById('chop').onclick = function changeContent() {
     logs += logPlus
     changeInventory()
     changeMarket()
   }
-  // $('#chop').click(function () {
-  //   logs += logPlus
-  //   changeInventory()
-  //   changeMarket()
-  // })
 
-  $('#mineStone').click(function () {
+  document.getElementById('mineStone').onclick = function changeContent() {
     if (pickaxes == 0) {
       alert('You have nothing to mine stone with!')
     } else {
       stones += stonePlus
       changeInventory()
     }
-  })
+  }
 
-  $('#sell1Log').click(function () {
+  document.getElementById('sell1Log').onclick = function changeContent() {
     logs--
     money += logPrice
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#sell10Log').click(function () {
+  document.getElementById('sell10Log').onclick = function changeContent() {
     logs -= 10
     money += logPrice * 10
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#sellAllLog').click(function () {
+  document.getElementById('sellAllLog').onclick = function changeContent() {
     money += logPrice * logs
     logs = 0
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#autoChopper').click(function () {
+  document.getElementById('autoChopper').onclick = function changeContent() {
     money -= autoChopperPrice
     autoLogPlus++
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#buyPickaxe').click(function () {
+  document.getElementById('buyPickaxe').onclick = function changeContent() {
     money -= pickaxePrice
     pickaxes++
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#sell1Stone').click(function () {
+  document.getElementById('sell1Stone').onclick = function changeContent() {
     stones--
     money += stonePrice
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#sell10Stone').click(function () {
+  document.getElementById('sell10Stone').onclick = function changeContent() {
     stones -= 10
     money += stonePrice * 10
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#sellAllStone').click(function () {
+  document.getElementById('sellAllStone').onclick = function changeContent() {
     money += stonePrice * stones
     stones = 0
     changeInventory()
     changeMarket()
-  })
+  }
 
-  $('#visit').click(function () {
+  document.getElementById('visit').onclick = function changeContent() {
     menu = switchMenu('marketplace')
     changeMarket()
-  })
+  }
 
-  $('#return').click(function () {
+  document.getElementById('return').onclick = function changeContent() {
     menu = switchMenu('main')
-  })
+  }
 
   function changeInventory() {
-    $('#money').html('Money: $' + money)
+    document.getElementById('money').innerHTML = 'Money: $' + money
 
     if (logs == 1) {
-      $('#logs').html('You now own ' + logs + ' log(s).')
+      document.getElementById('logs').innerHTML = 'You now own ' + logs + ' log(s).'
     } else {
-      $('#logs').html('You now own ' + logs + ' log(s).')
+      document.getElementById('logs').innerHTML = 'You now own ' + logs + ' log(s).'
     }
 
     if (pickaxes > 0) {
-      $('#pickaxes').html('You now own ' + pickaxes + ' pickaxe(s).')
+      document.getElementById('pickaxes').innerHTML = 'You now own ' + pickaxes + ' pickaxe(s).'
     } else {
-      $('#pickaxes').html('You now own ' + pickaxes + ' pickaxe(s).')
+      document.getElementById('pickaxes').innerHTML = 'You now own ' + pickaxes + ' pickaxe(s).'
     }
 
     if (stones > 0) {
-      $('#stone').html('You now own ' + stones + ' pieces of stone(s).')
+      document.getElementById('stone').innerHTML = 'You now own ' + stones + ' pieces of stone(s).'
     } else {
-      $('#stone').html('You now own ' + stones + ' pieces of stone(s).')
+      document.getElementById('stone').innerHTML = 'You now own ' + stones + ' pieces of stone(s).'
+    }
+  }
+
+  function changeMarket() {
+    if (logs > 0) {
+      document.getElementById('sellAllLog').style.display = 'block'
+    } else {
+      document.getElementById('sellAllLog').style.display = 'none'
     }
   }
 
@@ -171,6 +173,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
       $('#buyPickaxe').css('display', 'none')
     }
   }
+
+  // function switchMenu(menu) {
+  //   document.getElementById('menus').style.display = 'none'
+  //   document.getElementById('' + menu).style.display = 'block'
+  //   return menu
+  // }
 
   function switchMenu(menu) {
     $('.menus').children().css('display', 'none')
