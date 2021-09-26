@@ -128,13 +128,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 
-  function changeMarket() {
-    if (logs > 0) {
-      document.getElementById('sellAllLog').style.display = 'block'
-    } else {
-      document.getElementById('sellAllLog').style.display = 'none'
-    }
-  }
+  // function changeMarket() {
+  //   if (logs > 0) {
+  //     document.getElementById('sellAllLog').style.display = 'block'
+  //   } else {
+  //     document.getElementById('sellAllLog').style.display = 'none'
+  //   }
+  // }
 
   function changeMarket() {
     if (logs > 0) {
