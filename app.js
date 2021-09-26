@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let logs = 0
   let stones = 0
   let pickaxes = 0
+  let autoChopper = 0
   let money = 0
   let logPlus = 1
   let stonePlus = 1
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   document.getElementById('autoChopper').onclick = function changeContent() {
     money -= autoChopperPrice
     autoLogPlus++
+    autoChopper++
     changeInventory()
     changeMarket()
   }
@@ -118,15 +120,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
     } else {
       document.getElementById('stone').innerHTML = 'You now own ' + stones + ' pieces of stone(s).'
     }
+
+    if (autoChopper > 0) {
+      document.getElementById('autochopper').innerHTML = 'You now own ' + autoChopper + ' Auto Chopper(s)'
+    } else {
+      document.getElementById('autochopper').innerHTML = 'You now own ' + autoChopper + ' Auto Chopper(s)'
+    }
   }
 
-  // function changeMarket() {
-  //   if (logs > 0) {
-  //     document.getElementById('sellAllLog').style.display = 'block'
-  //   } else {
-  //     document.getElementById('sellAllLog').style.display = 'none'
-  //   }
-  // }
+  function changeMarket() {
+    if (logs > 0) {
+      document.getElementById('sellAllLog').style.display = 'block'
+    } else {
+      document.getElementById('sellAllLog').style.display = 'none'
+    }
+  }
 
   function changeMarket() {
     if (logs > 0) {
