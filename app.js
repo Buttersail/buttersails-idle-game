@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stones = 0
   let pickaxes = 0
   let autoChopper = 0
-  let money = 0
+  let money = 1000
   let logPlus = 1
   let stonePlus = 1
   let autoLogPlus = 0
@@ -62,6 +62,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     changeInventory()
     changeMarket()
   }
+
+  // document.getElementById('autoChopper10').onclick = function changeContent() {
+  //   money -= autoChopper * 10
+  //   autoLogPlus * 10
+  //   autoChopper * 10
+  //   changeInventory()
+  //   changeMarket()
+  // }
 
   document.getElementById('buyPickaxe').onclick = function changeContent() {
     money -= pickaxePrice
@@ -128,62 +136,71 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 
-  // function changeMarket() {
-  //   if (logs > 0) {
-  //     document.getElementById('sellAllLog').style.display = 'block'
-  //   } else {
-  //     document.getElementById('sellAllLog').style.display = 'none'
-  //   }
-  // }
-
   function changeMarket() {
+    console.log('changemarket called')
     if (logs > 0) {
-      $('#sellAllLog').css('display', 'block')
+      document.getElementById('sellAllLog').style.display = 'block'
     } else {
-      $('#sellAllLog').css('display', 'none')
+      document.getElementById('sellAllLog').style.display = 'none'
     }
+
     if (logs >= 1) {
-      $('#sell1Log').css('display', 'block')
+      document.getElementById('sell1Log').style.display = 'block'
     } else {
-      $('#sell1Log').css('display', 'none')
+      document.getElementById('sell1Log').style.display = 'none'
     }
+
     if (logs >= 10) {
-      $('#sell10Log').css('display', 'block')
+      document.getElementById('sell10Log').style.display = 'block'
     } else {
-      $('#sell10Log').css('display', 'none')
+      document.getElementById('sell10Log').style.display = 'none'
     }
 
     if (stones > 0) {
-      $('#sellAllStone').css('display', 'block')
+      document.getElementById('sellAllStone').style.display = 'block'
     } else {
-      $('#sellAllStone').css('display', 'none')
+      document.getElementById('sellAllStone').style.display = 'none'
     }
+
     if (stones >= 1) {
-      $('#sell1Stone').css('display', 'block')
+      document.getElementById('sell1Stone').style.display = 'block'
     } else {
-      $('#sell1Stone').css('display', 'none')
+      document.getElementById('sell1Stone').style.display = 'none'
     }
+
     if (stones >= 10) {
-      $('#sell10Stone').css('display', 'block')
+      document.getElementById('sell10Stone').style.display = 'block'
     } else {
-      $('#sell10Stone').css('display', 'none')
+      document.getElementById('sell10Stone').style.display = 'none'
     }
 
     if (money >= autoChopperPrice) {
-      $('#autoChopper').css('display', 'block')
+      document.getElementById('autoChopper').style.display = 'block'
     } else {
-      $('#autoChopper').css('display', 'none')
+      document.getElementById('autoChopper').style.display = 'none'
     }
 
-    if (money >= pickaxePrice) {
-      $('#buyPickaxe').css('display', 'block')
+    if (money >= autoChopperPrice * 10) {
+      document.getElementById('autoChopper10').style.display = 'block'
     } else {
-      $('#buyPickaxe').css('display', 'none')
+      document.getElementById('autoChopper10').style.display = 'none'
+    }
+
+    // if (money >= autoChopperPrice * autoChopper) {
+    //   document.getElementById('autoChopperAll').style.display = 'block'
+    // } else {
+    //   document.getElementById('autoChopperAll').style.display = 'none'
+    // }
+
+    if (money >= pickaxePrice) {
+      document.getElementById('buyPickaxe').style.display = 'block'
+    } else {
+      document.getElementById('buyPickaxe').style.display = 'none'
     }
   }
 
   // function switchMenu(menu) {
-  //   document.getElementById('menus').style.display = 'none'
+  //   document.getElementsByClassName('menus').children.style.display = 'none'
   //   document.getElementById('' + menu).style.display = 'block'
   //   return menu
   // }
