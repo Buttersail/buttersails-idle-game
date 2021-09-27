@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stones = 0
   let pickaxes = 0
   let autoChopper = 0
-  let money = 1000
+  let money = 0
   let logPlus = 1
   let stonePlus = 1
   let autoLogPlus = 0
