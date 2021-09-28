@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stones = 0
   let pickaxes = 0
   let autoChopper = 0
-  let money = 0
+  let money = 0 //Testing purposes, remember to put this at 0 once you are ready to publish the game
   let logPlus = 1
   let stonePlus = 1
   let autoLogPlus = 0
@@ -63,13 +63,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
     changeMarket()
   }
 
-  // document.getElementById('autoChopper10').onclick = function changeContent() {
-  //   money -= autoChopper * 10
-  //   autoLogPlus * 10
-  //   autoChopper * 10
-  //   changeInventory()
-  //   changeMarket()
-  // }
+  document.getElementById('autoChopper10').onclick = function changeContent() {
+    money -= autoChopperPrice * 10
+    if (autoLogPlus == 0) {
+      autoLogPlus = 10
+    } else if (autoLogPlus >= 10) {
+      autoLogPlus = autoLogPlus + 10
+    } else {
+      autoLogPlus + 10
+    }
+
+    if (autoChopper == 0) {
+      autoChopper = 10
+    } else if (autoChopper >= 10) {
+      autoChopper = autoChopper + 10
+    } else {
+      autoChopper + 10
+    }
+    changeInventory()
+    changeMarket()
+  }
 
   document.getElementById('buyPickaxe').onclick = function changeContent() {
     money -= pickaxePrice
@@ -137,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
 
   function changeMarket() {
-    console.log('changemarket called')
     if (logs > 0) {
       document.getElementById('sellAllLog').style.display = 'block'
     } else {
@@ -200,10 +212,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
 
   // function switchMenu(menu) {
-  //   document.getElementsByClassName('menus').children.style.display = 'none'
-  //   document.getElementById('' + menu).style.display = 'block'
+  //   let arr = Array.from(document.querySelectorAll('.menus > *'))
+  //   for (let i = 0; i < arr.length; i++) {
+  //     arr[i].style.display = 'block'
+  //   }
   //   return menu
   // }
+
+  //Above code seems to be working, a little bit at least. Need to figure out how to make it work properly though
+  //Last piece of jQuery to be removed to make the code pure JS
 
   function switchMenu(menu) {
     $('.menus').children().css('display', 'none')
