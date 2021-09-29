@@ -13,6 +13,30 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stonePrice = 5
   let menu
 
+  const saveGame = document.getElementById('saveGame')
+  const storage = window.localStorage
+
+  let save = {}
+
+  function load() {
+    if (storage.getItem('save')) {
+      save = JSON.parse(storage.getItem('save'))
+      console.log('Save found ', save)
+      log.innerHTML = save.logs
+    } else {
+      save.logs = 0
+      console.log('Save not found')
+      logs.innerHTML = 0
+    }
+  }
+
+  saveGame.addEventListener('click', function () {
+    save.logs++
+    logs.innerHTML = save.logs
+  })
+
+  //WIP Save Button above
+
   setInterval(() => {
     logs += autoLogPlus
     changeInventory()
@@ -79,6 +103,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
       autoChopper = autoChopper + 10
     } else {
       autoChopper + 10
+    }
+    changeInventory()
+    changeMarket()
+  }
+
+  document.getElementById('autoChopper100').onclick = function changeContent() {
+    money -= autoChopperPrice * 100
+    if (autoLogPlus == 0) {
+      autoLogPlus = 100
+    } else if (autoLogPlus >= 100) {
+      autoLogPlus = autoLogPlus + 100
+    } else {
+      autoLogPlus + 100
+    }
+
+    if (autoChopper == 0) {
+      autoChopper = 100
+    } else if (autoChopper >= 100) {
+      autoChopper = autoChopper + 100
+    } else {
+      autoChopper + 100
     }
     changeInventory()
     changeMarket()
@@ -198,11 +243,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById('autoChopper10').style.display = 'none'
     }
 
+    if (money >= autoChopperPrice * 100) {
+      document.getElementById('autoChopper10').style.display = 'block'
+    } else {
+      document.getElementById('autoChopper10').style.display = 'none'
+    }
+
     // if (money >= autoChopperPrice * autoChopper) {
     //   document.getElementById('autoChopperAll').style.display = 'block'
     // } else {
     //   document.getElementById('autoChopperAll').style.display = 'none'
     // }
+
+    //above code is for the ability to buy set amount of autochoppers, havent figured out the logic for this one quite yet!
 
     if (money >= pickaxePrice) {
       document.getElementById('buyPickaxe').style.display = 'block'
