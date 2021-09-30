@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stonePrice = 5
   let menu
 
+  //WIP Save Button
+
   const saveGame = document.getElementById('saveGame')
   const storage = window.localStorage
 
@@ -34,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     save.logs++
     logs.innerHTML = save.logs
   })
-
-  //WIP Save Button above
 
   setInterval(() => {
     logs += autoLogPlus
@@ -244,18 +244,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
 
     if (money >= autoChopperPrice * 100) {
-      document.getElementById('autoChopper10').style.display = 'block'
+      document.getElementById('autoChopper100').style.display = 'block'
     } else {
-      document.getElementById('autoChopper10').style.display = 'none'
+      document.getElementById('autoChopper100').style.display = 'none'
     }
+
+    //Code is for the ability to buy set amount of autochoppers, havent figured out the logic for this one quite yet!
 
     // if (money >= autoChopperPrice * autoChopper) {
     //   document.getElementById('autoChopperAll').style.display = 'block'
     // } else {
     //   document.getElementById('autoChopperAll').style.display = 'none'
     // }
-
-    //above code is for the ability to buy set amount of autochoppers, havent figured out the logic for this one quite yet!
 
     if (money >= pickaxePrice) {
       document.getElementById('buyPickaxe').style.display = 'block'
@@ -264,6 +264,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 
+  //Code seems to be working, a little bit at least. Need to figure out how to make it work properly though
+  //Suggested that I figure out what the code needs to do before I attempt to bruteforce a solution!
+  //Last piece of jQuery to be removed to make the code pure JS
+
   // function switchMenu(menu) {
   //   let arr = Array.from(document.querySelectorAll('.menus > *'))
   //   for (let i = 0; i < arr.length; i++) {
@@ -271,9 +275,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
   //   }
   //   return menu
   // }
-
-  //Above code seems to be working, a little bit at least. Need to figure out how to make it work properly though
-  //Last piece of jQuery to be removed to make the code pure JS
 
   function switchMenu(menu) {
     $('.menus').children().css('display', 'none')
