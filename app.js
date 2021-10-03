@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     logs.innerHTML = save.logs
   })
 
+  //Start of "working" code
+
   setInterval(() => {
     logs += autoLogPlus
     changeInventory()
@@ -52,10 +54,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
   document.getElementById('mineStone').onclick = function changeContent() {
     if (pickaxes == 0) {
       alert('You have nothing to mine stone with!')
+      // } else if (pickaxes > 1) {
+      //   stone == stone + stonePlus * pickaxes
+      //   console.log('Enter else if')
     } else {
       stones += stonePlus
-      changeInventory()
     }
+    changeInventory()
   }
 
   document.getElementById('sell1Log').onclick = function changeContent() {
