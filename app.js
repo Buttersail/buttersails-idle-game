@@ -264,21 +264,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 
-  //Code seems to be working, a little bit at least. Need to figure out how to make it work properly though
-  //Suggested that I figure out what the code needs to do before I attempt to bruteforce a solution!
-  //Last piece of jQuery to be removed to make the code pure JS
-
-  // function switchMenu(menu) {
-  //   let arr = Array.from(document.querySelectorAll('.menus > *'))
-  //   for (let i = 0; i < arr.length; i++) {
-  //     arr[i].style.display = 'block'
-  //   }
-  //   return menu
-  // }
-
   function switchMenu(menu) {
-    $('.menus').children().css('display', 'none')
-    $('.' + menu).css('display', 'block')
+    let arrNone = Array.from(document.querySelectorAll('.menus > *'))
+    for (let i = 0; i < arrNone.length; i++) {
+      arrNone[i].style.display = 'none'
+    }
+    let arrBlock = Array.from(document.querySelectorAll('.' + menu))
+    for (let i = 0; i < arrBlock.length; i++) {
+      arrBlock[i].style.display = 'block'
+    }
     return menu
   }
 })
