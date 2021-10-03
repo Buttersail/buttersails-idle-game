@@ -5,4 +5,5 @@ This is just a idle game project I'm working on in my freetime, very basic JS, t
 Current planned features:  
 Combat  
 Multiple Pickaxes giving more stone  
+Ability to locally save the game  
 General game balancing
