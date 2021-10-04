@@ -3,14 +3,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
   let stones = 0
   let pickaxes = 0
   let autoChopper = 0
-  let autoMiner = 0
   let money = 0 //Testing purposes, remember to put this at 0 once you are ready to publish the game
   let logPlus = 1
   let stonePlus = 1
   let autoLogPlus = 0
-  let autoMinerPlus = 0
   let autoChopperPrice = 100
-  let autoMinerPrice = 200
   let pickaxePrice = 50
   let logPrice = 1
   let stonePrice = 5
@@ -48,17 +45,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     changeMarket()
   }, 1000)
 
-  //Fix logic
-  setInterval(() => {
-    if (pickaxes > 1) {
-      stones += autoMinerPlus * pickaxes
-    } else {
-      stones += autoMinerPlus
-    }
-    changeInventory()
-    changeMarket()
-  }, 1000)
-
   document.getElementById('chop').onclick = function changeContent() {
     logs += logPlus
     changeInventory()
@@ -68,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
   document.getElementById('mineStone').onclick = function changeContent() {
     if (pickaxes == 0) {
       alert('You have nothing to mine stone with!')
-    } else if (pickaxes > 1) {
-      stones += stonePlus * pickaxes
+      // } else if (pickaxes > 1) {
+      //   stone == stone + stonePlus * pickaxes
+      //   console.log('Enter else if')
     } else {
       stones += stonePlus
     }
@@ -175,20 +162,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     changeMarket()
   }
 
-  document.getElementById('autoMiner').onclick = function changeContent() {
-    if (pickaxes == 0) {
-      alert('You have nothing to mine stone with!')
-    } else if (pickaxes == autoMiner) {
-      alert('You need more pickaxes')
-    } else {
-      money -= autoMinerPrice
-      autoMinerPlus++
-      autoMiner++
-    }
-    changeInventory()
-    changeMarket()
-  }
-
   document.getElementById('visit').onclick = function changeContent() {
     menu = switchMenu('marketplace')
     changeMarket()
@@ -223,12 +196,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById('autochopper').innerHTML = 'You now own ' + autoChopper + ' Auto Chopper(s)'
     } else {
       document.getElementById('autochopper').innerHTML = 'You now own ' + autoChopper + ' Auto Chopper(s)'
-    }
-
-    if (autoMiner > 0) {
-      document.getElementById('autominer').innerHTML = 'You now own ' + autoMiner + ' Auto Miners(s)'
-    } else {
-      document.getElementById('autominer').innerHTML = 'You now own ' + autoMiner + ' Auto Miners(s)'
     }
   }
 
@@ -299,12 +266,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       document.getElementById('buyPickaxe').style.display = 'block'
     } else {
       document.getElementById('buyPickaxe').style.display = 'none'
-    }
-
-    if (money >= autoMinerPrice) {
-      document.getElementById('autoMiner').style.display = 'block'
-    } else {
-      document.getElementById('autoMiner').style.display = 'none'
     }
   }
 
