@@ -44,16 +44,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   setInterval(() => {
     logs += autoLogPlus
+    // console.log('autochopper')
     changeInventory()
     changeMarket()
   }, 1000)
 
   //Fix logic
+  //Current issue, game doesnt increment properly when buying Auto Miners
   setInterval(() => {
-    if (pickaxes > 1) {
+    if (pickaxes == autoMiner) {
       stones += autoMinerPlus * pickaxes
+      console.log('autominer if')
     } else {
       stones += autoMinerPlus
+      console.log('autominer else')
     }
     changeInventory()
     changeMarket()
@@ -180,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       alert('You have nothing to mine stone with!')
     } else if (pickaxes == autoMiner) {
       alert('You need more pickaxes')
+      console.log('autoMiner Click else if')
     } else {
       money -= autoMinerPrice
       autoMinerPlus++
