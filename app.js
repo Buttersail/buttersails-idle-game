@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }, 1000)
 
   //Fix logic
-  //Current issue, game doesnt increment properly when buying Auto Miners
+  //Current issue, game doesnt increment properly according to the amount of autominers + pickaxes
   setInterval(() => {
-    if (pickaxes == autoMiner) {
-      stones += autoMinerPlus * pickaxes
+    if (pickaxes === autoMiner) {
+      stones += stonePlus * pickaxes //(pickaxes + autoMinerPlus)
       console.log('autominer if')
     } else {
       stones += autoMinerPlus
