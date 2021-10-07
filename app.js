@@ -44,20 +44,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
   setInterval(() => {
     logs += autoLogPlus
-    // console.log('autochopper')
     changeInventory()
     changeMarket()
   }, 1000)
 
-  //Fix logic
-  //Current issue, game doesnt increment properly according to the amount of autominers + pickaxes
   setInterval(() => {
-    if (pickaxes === autoMiner) {
-      stones += stonePlus * pickaxes //(pickaxes + autoMinerPlus)
-      console.log('autominer if')
+    if (pickaxes >= autoMiner) {
+      stones += pickaxes * autoMinerPlus
     } else {
       stones += autoMinerPlus
-      console.log('autominer else')
     }
     changeInventory()
     changeMarket()
